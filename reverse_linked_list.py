@@ -42,9 +42,14 @@ node3.next = node4
 node4.next = node5
 current_node = node1
 
-while True:
-    print(current_node.val, "->",)
-    if current_node.next is None:
-        print("None")
-        break
-    current_node = current_node.next
+def reverseList(current_node):
+    next_node = None
+    previous_node = None
+    while current_node:
+        next_node = current_node.next
+        current_node.next = previous_node
+        previous_node = current_node
+        current_node = next_node
+    return previous_node
+
+print(reverseList(current_node))
