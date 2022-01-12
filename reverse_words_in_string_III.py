@@ -37,3 +37,44 @@ class Solution:
             left += 1
             right -= 1
         return word
+
+
+#with comments
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+#       convert string into an array
+        arr = list(s)
+        left, right = 0,0
+
+        for index, value in enumerate(arr):
+#           search for spaces
+            if value == " ":
+                right = index -1
+                self.reverser(arr, left, right)
+                left = index + 1
+                
+            if index == len(arr) -1:
+                right = index
+                self.reverser(arr, left, right)        
+        return "".join(arr)
+    
+    
+    def reverser(self, word, left, right):
+        while left < right:
+            word[left], word[right] = word[right], word[left]
+            left += 1
+            right -= 1
+        return word
+
+
+# Faster solution
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        arr = s.split(" ")
+        new_arr = []
+        for i in arr:
+            new_arr.append(i[::-1])
+        
+        return " ".join(new_arr)
+            
