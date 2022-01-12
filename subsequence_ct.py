@@ -14,6 +14,9 @@ Answer: True
 
 """
 
+from collections import Counter
+
+
 def validSubSeq(arr, seq):
     for i in seq:
         if i not in arr:
@@ -21,6 +24,15 @@ def validSubSeq(arr, seq):
     return True
         
 
+def valid(arr, seq):
+    seen = Counter(arr)
+    for i in seq:
+        if i not in seen:
+            return False
+    return True
+
 
 
 print(validSubSeq([5,1,22,25,6,-1,8,10],[1,6,-1,10]))
+
+print(valid([5,1,22,25,6,-1,8,10],[1,-1,10]))
