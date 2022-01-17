@@ -18,3 +18,23 @@ Output: -1
 """
 
 
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        d = {}
+        seen = set()
+
+        for i, char in enumerate(s):
+            if char not in seen:
+                d[char] = i
+                seen.add(char)
+            elif char in d:
+                del d[char]
+        
+        return min(d.values()) if d else -1
+
+
+
+s = Solution()
+print(s.firstUniqChar("leetcode"))
+print(s.firstUniqChar("loveleetcode"))
+print(s.firstUniqChar("aabb"))
