@@ -28,3 +28,33 @@ The number of nodes in the tree is in the range [1, 104].
 
 """
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+
+class Solution:
+    def isValidBST(self, root) -> bool:
+#       creating a list with a tuple of root, and arbitary upper and lower limits
+#       DFS
+        stack = [(root, -float("inf"), float('inf'))]
+        
+        while len(stack):
+#           splitting the the tuple into three values, which is the node which it is at, the minimum bound to compare, and upper bound to compare
+#           Later we are going to substitute depending on the left or right, where what becomes the low or upper bound
+            node, low_bound, upper_bound = stack.pop()
+#           Checking at each level to see if the value is greater than the left side, and the value less then the right side. 
+            if node.val <= low_bound or node.val >= upper_bound:
+                return False
+#           Traversing the left branch now: if there is a node.left value, we append it to the tuple
+            if node.left:
+                stack.append((node.left, low_bound, node.val))
+            
+            if node.right:
+                stack.append((node.right, node.val, upper_bound))
+                
+        return True
+#       Solution solved with O(n) time and space
