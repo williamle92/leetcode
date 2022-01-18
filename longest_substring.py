@@ -27,3 +27,15 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 """
 
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = {}
+        left = maxlength = 0
+        
+        for index, char in enumerate(s):
+            if char in seen and left <= seen[char]:
+                left = seen[char] + 1
+            else:
+                maxlength = max(maxlength, index -left + 1)
+            seen[char] = index
+        return maxlength
