@@ -47,9 +47,11 @@ class Solution:
         return self.dfs(root1) == self.dfs(root2)
 #   we are going to depth first search the branch 
     def dfs(self,root):
+        # Check first to see if there is no left and right nodes, then return arr
         if root.left is None and root.right is None:
             return [root.val]
-
+        # if there is left and right, we are going to recursively call on the left side first, 
+        # this will resolve the left side first and then right after all of the left is resolve
         if root.left and root.right:
             return self.dfs(root.left) + self.dfs(root.right)
         
