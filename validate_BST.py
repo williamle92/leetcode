@@ -58,3 +58,15 @@ class Solution:
                 
         return True
 #       Solution solved with O(n) time and space
+
+
+#       Optimized solution but might cause a stack overflow if the input gets bigger
+class Solution:
+    def isValidBST(self, root,low=-float('inf'), high = float('inf')) -> bool:
+        if not root:
+            return True
+        
+        if root.val >= high or root.val <= low:
+            return False
+        
+        return self.isValidBST(root.left, low, root.val) and self.isValidBST(root.right, root.val, high)
