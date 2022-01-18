@@ -42,13 +42,28 @@ def uniqueMorseRepresentations(words) -> int:
         # Create an empty array
         c = []
         for w in words:
-            # create an empty 
+            # create an empty string where we will add upon the translated letter into morse
+            # the string will be reset after every word
             val= ""
             for d in w:
+                # Join all the values in the morse code into one string
+
                 trans="".join(morse[ord(d) -ord('a')])
                 val += trans
+            # append it into a list
             c.append(val)
         print(c)
-            
+        # put that list in an set and return the length 
         return len(set(c))
 print(uniqueMorseRepresentations(["gin","zen","gig","msg"]))
+
+
+def uniqueMorse(words) -> int:
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        # Create an empty array
+        c = []
+        for word in words:
+            c.append("".join(morse[ord(letter)-ord('a')] for letter in word))
+        return len(set(c))
+
+print(uniqueMorse(["gin","zen","gig","msg"]))
