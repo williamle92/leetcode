@@ -19,4 +19,16 @@ Explanation: 2-2 = 1/22 = 1/4 = 0.25
 """
 
 def pow(x,n):
+    # if the exponent is n = 0, the exponent is 1
+    if n == 0: return 1
+    # now we have to consider cases where n < 0, which means the x gets inverted
+    if n< 0: return pow(1/x, -n)
+    # decided not to use base to show the logic behind the recursion
+    # think of powers 10^ 20 = 10^10 * 10^ 10
     
+    base = pow(x, n//2)
+    if n % 2 == 0: return pow(x, n//2) * pow(x, n//2)
+    if n % 2 == 1: return pow(x, n//2) * pow(x, n//2) * x
+
+print(pow(2.000, 10))
+print(pow(2.100, 3))
