@@ -1,3 +1,4 @@
+
 ''''
 You are given the heads of two sorted linked lists list1 and list2.
 
@@ -34,4 +35,25 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+def mergeTwoLists(l1, l2):
+    # First we are going to create 2 pointers that points to the head of our newly create listNode class
+    # listnode can take any value since we are going to return the head.next
+    # current is going to traverse the linked list while the dummy points to the head, we need a dummy or else we
+    # we can not traverse the linkedlist from the beginning again
+    curr = dummy = ListNode(0)
+
+    # Check to see if there is both a l1 and l2
+    while l1 and l2:
+        if l1.val <= l2.val:
+            curr.next = l1
+            l1 = l1.next
+        else:
+            curr.next = l2
+            l2 = l2.next
+        curr = curr.next
+    # since dummy has always been pointing to the head of the linked list, we can call dummy.next 
+    return dummy.next
+
+
 
