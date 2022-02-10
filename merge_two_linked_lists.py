@@ -1,3 +1,4 @@
+from typing import List
 import unittest
 ''''
 You are given the heads of two sorted linked lists list1 and list2.
@@ -55,20 +56,3 @@ def mergeTwoLists(l1, l2):
     # since dummy has always been pointing to the head of the linked list, we can call dummy.next 
     return dummy.next
 
-
-
-
-
-class TestProblem(unittest.TestCase):
-    def test_linked_list_same_length(self):
-        list1 = ListNode(1)
-        list1.next = 2
-        node2 = list1.next
-        node2.next = 4
-
-        list2 = ListNode(1)
-        list2.next = 3 
-        node2_2 = list2.next
-        node2_2.next = 4
-
-        mergeTwoLists(list1,list2)
