@@ -46,3 +46,18 @@ class Solution:
             
         return arr
             
+
+class Solution:
+    def productExceptSelf(self, nums):
+        arr = [1] * len(nums)
+        
+        pb = pa = 1
+        
+        for i in range(len(nums)):
+            j = -1 - i
+            arr[i] *= pb
+            arr[j] *= pa
+            pb *= nums[i]
+            pa *= nums[j]
+            
+        return arr
