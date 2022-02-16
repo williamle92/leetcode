@@ -25,3 +25,15 @@ class Solution:
             if value > 1:
                 return True
         return False
+
+class Solution:
+    def containsDuplicate(self, nums) :
+        sorted_nums = sorted(nums)
+        for i in range(len(nums)-1):
+            if sorted_nums[i] == sorted_nums[i+1]:
+                return True
+        return False
+
+class Solution:
+    def containsDuplicate(self, nums):
+        return len(nums) > len(set(nums))
